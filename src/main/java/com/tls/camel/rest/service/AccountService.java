@@ -2,42 +2,17 @@ package com.tls.camel.rest.service;
 
 
 import java.io.IOException;
-import java.net.URI;
-import java.time.Duration;
-
-import org.apache.camel.model.OnExceptionDefinition;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-
-import com.tls.camel.exception.GlobalErrorHandler;
-import com.tls.camel.exception.MyClientException;
-import com.tls.camel.exception.ServiceException;
-import com.tls.camel.exception.TaasheeException;
 import com.tls.camel.rest.dao.Account;
 import com.tls.camel.rest.dao.AccountResponse;
-import com.tls.camel.rest.dao.Error;
-
-import reactor.core.publisher.Mono;
-import reactor.netty.http.client.HttpClient;
-
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.reactive.function.BodyInserters;
-import org.springframework.web.reactive.function.client.ClientResponse;
-import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClient.Builder;
 import org.springframework.web.reactive.function.client.WebClientRequestException;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
@@ -74,7 +49,7 @@ public class AccountService {
         .header("x-api-key", "9f3245Z06F80OHRr8OBc39ifTM1ZfL7J718Nv5OG")
         .body(BodyInserters.fromValue(account)).accept(MediaType.APPLICATION_JSON)
         .retrieve()
-        .bodyToMono(AccountResponse.class) //.timeout(Duration.ofSeconds(10)).onErrorMap(original -> new Exception("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"))
+        .bodyToMono(AccountResponse.class)
         .block();
 		 return ResponseEntity.status(HttpStatus.OK).body(response);
 		}catch(WebClientResponseException we) {
