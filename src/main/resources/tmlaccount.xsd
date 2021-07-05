@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.tml.com/springsoap/gen"
+           targetNamespace="http://www.tml.com/springsoap/gen" elementFormDefault="qualified">
+
+    <xs:element name="addAccountRequest">
+        <xs:complexType>
+            <xs:sequence>
+                 <xs:element name="k_number" type="xs:string" />
+                        <xs:element name="agent_number" type="xs:string" />
+                          <xs:element name="customer_number" type="xs:string" />
+                        <xs:element name="caller_id" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addAccountResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="accountResponse" type="tns:accountResponse"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+     <xs:complexType name="accountResponse">
+                <xs:sequence>
+                   
+                    <xs:element name="error" type="tns:error" />
+                     <xs:element name="success" type="tns:success" />
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:complexType name="error">
+              <xs:sequence>
+             <xs:element name="message" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="success">
+              <xs:sequence>
+             <xs:element name="message" type="xs:string" />
+               <xs:element name="status" type="xs:string" />
+                 <xs:element name="caller_id" type="xs:string" />
+              </xs:sequence>
+            </xs:complexType>
+</xs:schema>

@@ -4,6 +4,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import com.tls.camel.rest.dao.Account;
@@ -19,7 +20,7 @@ public class AccountProcess implements Processor {
 	@Override
 	public void process(Exchange exchange) throws Exception {
 		// TODO Auto-generated method stub
-		AccountResponse response=accountService.addAccountDetails(exchange.getIn().getBody(Account.class));
+		ResponseEntity<?> response=accountService.addAccountDetails(exchange.getIn().getBody(Account.class));
 		exchange.getIn().setBody(response);
 	}
 
