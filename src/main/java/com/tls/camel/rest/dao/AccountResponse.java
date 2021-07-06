@@ -15,10 +15,10 @@ import lombok.ToString;
 public class AccountResponse {
 	private Error error;
 	private Success success;
-	public AccountResponse() {
-	}
-	public AccountResponse(String message) {
-	}
+
+	/*
+	 * public AccountResponse() { } public AccountResponse(String message) { }
+	 */
 	public Error getError() {
 		return error;
 	}
