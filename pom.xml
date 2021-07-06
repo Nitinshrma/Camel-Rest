@@ -91,7 +91,13 @@
 			<optional>true</optional>
 		</dependency>
 	</dependencies>
-
+		<distributionManagement>
+	<repository>
+	<id>nexus</id>
+	<name>TML Repository</name>
+	<url>https://nexus-cicd.api.tatamotors.com/repository/maven-releases/</url>
+	</repository>
+		</distributionManagement>
 	<build>
 		<plugins>
 			<plugin>
@@ -106,7 +112,7 @@
 					</excludes>
 				</configuration>
 			</plugin>
-<plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jaxb2-maven-plugin</artifactId>
 				<version>1.6</version>
@@ -147,6 +153,7 @@
 					</schemaIncludes>
 				</configuration>
 			</plugin>-->
+			
 		</plugins>
 	</build>
 
