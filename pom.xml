@@ -11,13 +11,27 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>CamelRestDsl</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>CamelRestDsl</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>8</java.version>
 	</properties>
 	<dependencies>
+	<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+<dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-classic</artifactId>
+    <version>1.2.3</version>
+    <scope>test</scope>
+</dependency>
+	<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
+<dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-core</artifactId>
+    <version>1.2.3</version>
+</dependency>
+	
 		<!-- https://mvnrepository.com/artifact/org.apache.camel/camel-spring-boot-starter -->
 		<dependency>
 			<groupId>org.apache.camel</groupId>
@@ -96,6 +110,7 @@
 	<id>nexus</id>
 	<name>TML Repository</name>
 	<url>https://nexus-cicd.api.tatamotors.com/repository/maven-releases/</url>
+	
 	</repository>
 		</distributionManagement>
 	<build>
