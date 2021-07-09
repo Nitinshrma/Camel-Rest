@@ -25,7 +25,7 @@ public class ApplicationResource extends RouteBuilder {
 	public void configure() throws Exception
 	{
 		restConfiguration().component("servlet").port(8080).host("localhost").bindingMode(RestBindingMode.json);
-		//rest().get("/helloworld").produces(MediaType.APPLICATION_JSON_VALUE).route().setBody(constant("WELCOME TO FUSE REST EXAMPLE"));
+		rest().get("/helloworld").produces(MediaType.APPLICATION_JSON_VALUE).route().setBody(constant("WELCOME TO FUSE REST EXAMPLE"));
 	
 	    //rest().get("/getAccountDetails").produces(MediaType.APPLICATION_JSON_VALUE).route().setBody(()->accountservice.getAccountDetails());
 	   
