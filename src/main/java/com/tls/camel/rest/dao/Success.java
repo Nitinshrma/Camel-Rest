@@ -4,6 +4,15 @@ public class Success {
 	public String status;
     public String message;
     public String call_id;
+    public String primary_id;
+    
+    
+	public String getPrimary_id() {
+		return primary_id;
+	}
+	public void setPrimary_id(String primary_id) {
+		this.primary_id = primary_id;
+	}
 	public String getStatus() {
 		return status;
 	}

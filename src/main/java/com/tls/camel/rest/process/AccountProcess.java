@@ -20,20 +20,6 @@ public class AccountProcess implements Processor {
 	public void process(Exchange exchange) throws Exception {
 		// TODO Auto-generated method stub
 		ResponseEntity<?> response=accountService.addAccountDetails(exchange.getIn().getBody(Account.class));
-		
-		final CamelContext context = exchange.getContext();
-		new Thread(new Runnable() {
-
-			@Override
-			public void run() {
-				try {
-			          context.stop();
-			        } catch (Exception e) {
-			          throw new RuntimeException(e);
-			        }
-			}			
-			
-		 }).start();
 		exchange.getIn().setBody(response);
 	}
 

@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import com.sun.net.httpserver.Authenticator.Success;
 import com.tls.camel.rest.dao.Account;
 import com.tls.camel.rest.dao.AccountResponse;
 import org.springframework.web.reactive.function.BodyInserters;
@@ -36,6 +38,8 @@ public class AccountService {
 	public ResponseEntity<AccountResponse> addAccountDetails(Account account) throws IOException
 	{
 		System.out.println("post method for external api call..."+account.getAgent_number());
+		
+		
 		//3scale api need to consume  because it is in demeliterize zone so we are doing.....
 		String restUrl="https://kpi.knowlarity.com/Basic/v1/account/call/makecall";
 		JSONObject  jsonobj=null;
@@ -51,12 +55,17 @@ public class AccountService {
         .retrieve()
         .bodyToMono(AccountResponse.class)
         .block();
+		 response.getSuccess().setPrimary_id(account.getPrimary_id());
+		 if(response.getSuccess().getStatus()=="success") {
+			 System.out.println("In success(200) response block.............");
+		 }else {
+			 System.out.println("In not success response block.............");
+		 }
 		 return ResponseEntity.status(HttpStatus.OK).body(response);
 		}catch(WebClientResponseException we) {
 			return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new AccountResponse());
 		}catch(WebClientRequestException wre) {
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
-		
 	}	
 }

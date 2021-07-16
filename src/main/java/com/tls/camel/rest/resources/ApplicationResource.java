@@ -24,12 +24,12 @@ public class ApplicationResource extends RouteBuilder {
 	AccountProcess processor;
 	public void configure() throws Exception
 	{
-		restConfiguration().component("servlet").port(8080).host("localhost").bindingMode(RestBindingMode.json);
-		rest().get("/helloworld").produces(MediaType.APPLICATION_JSON_VALUE).route().setBody(constant("WELCOME TO FUSE REST EXAMPLE"));
+		restConfiguration().component("servlet").bindingMode(RestBindingMode.json);
+		rest().get("/helloworld").produces(MediaType.APPLICATION_JSON_VALUE).route().setBody(constant("WELCOME TO FUSE REST EXAMPLEeeezzzzzzz"));
 	
 	    //rest().get("/getAccountDetails").produces(MediaType.APPLICATION_JSON_VALUE).route().setBody(()->accountservice.getAccountDetails());
 	   
-	    rest().post("/addAccountDetails").consumes(MediaType.APPLICATION_JSON_VALUE).type(Account.class).outType(AccountResponse.class).route().process(processor).endRest();
+	    rest().post("/knowlarityCall").consumes(MediaType.APPLICATION_JSON_VALUE).type(Account.class).outType(AccountResponse.class).route().process(processor).endRest();
 	   // rest().post("/addAccountDetails").consumes(MediaType.APPLICATION_JSON_VALUE).type(Account.class).produces(MediaType.APPLICATION_JSON_VALUE).route().process(processor).endRest();
 	}
 }

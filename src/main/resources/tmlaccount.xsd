@@ -9,6 +9,7 @@
                         <xs:element name="agent_number" type="xs:string" />
                           <xs:element name="customer_number" type="xs:string" />
                         <xs:element name="caller_id" type="xs:string" />
+                        <xs:element name="primary_id" type="xs:string" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -39,6 +40,7 @@
              <xs:element name="message" type="xs:string" />
                <xs:element name="status" type="xs:string" />
                  <xs:element name="caller_id" type="xs:string" />
+                  <xs:element name="primary_id" type="xs:string" />
               </xs:sequence>
             </xs:complexType>
 </xs:schema>

@@ -14,6 +14,15 @@ public class Account {
 	private String agent_number;
 	private String customer_number;
 	private String caller_id;
+	private String primary_id;
+
+	
+	public String getPrimary_id() {
+		return primary_id;
+	}
+	public void setPrimary_id(String primary_id) {
+		this.primary_id = primary_id;
+	}
 	public String getK_number() {
 		return k_number;
 	}

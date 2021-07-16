@@ -25,9 +25,9 @@ public class AccountSoapService {
 		 account.setCaller_id(request.getCallerId());
 		 account.setCustomer_number(request.getCustomerNumber());
 		 account.setAgent_number(request.getAgentNumber());
-		 
+		 account.setPrimary_id(request.getPrimaryId());
 		ResponseEntity<com.tls.camel.rest.dao.AccountResponse> response =service.addAccountDetails(account);
-		
+		System.out.println("Hello.primary...... "+response.getBody().getSuccess().getPrimary_id());
 				System.out.println("Hello....... "+response.toString());
 				if(response!=null)
 				{
@@ -38,13 +38,14 @@ public class AccountSoapService {
 				}
 				AccountResponse rs=new AccountResponse();
 				Success su=new Success();
-				com.tls.camel.rest.dao.Success succ=response.getBody().getSuccess();
 				if(response.getBody().getSuccess()!=null)
 				{
 					System.out.println(">>   in if ");
 				su.setCallerId(response.getBody().getSuccess().getCall_id());
 				su.setMessage(response.getBody().getSuccess().getMessage());
 				su.setStatus(response.getBody().getSuccess().getStatus());
+				su.setPrimaryId(response.getBody().getSuccess().getPrimary_id());
+				
 				}
 				else
 				{
@@ -52,6 +53,7 @@ public class AccountSoapService {
 					su.setCallerId("none");
 					su.setMessage("none");
 					su.setStatus("none");
+					su.setPrimaryId("none");
 				}
 				Error error=new Error();
 				System.out.println("nnnnnn,,,"+error.getMessage());
